@@ -6,13 +6,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
-public record PaginationDto(int currentPage, int totalPages, int pageSize, int totalElements, Collection<? extends Serializable> elements)  implements  Serializable{
-    public PaginationDto(int currentPage, int totalPages, int pageSize, int totalElements, Collection<? extends Serializable> elements) {
+public record PaginationDto(int currentPage,int pageTotalElements, int totalPages, int pageSize, int totalElements, Collection<? extends Serializable> elements)  implements  Serializable{
+
+    public PaginationDto(int currentPage, int pageTotalElements, int totalPages, int pageSize, int totalElements, Collection<? extends Serializable> elements) {
         this.currentPage = currentPage;
+        this.pageTotalElements = pageTotalElements;
         this.totalPages = totalPages;
         this.pageSize = pageSize;
         this.totalElements = totalElements;
-        this.elements = (elements ==null)? Collections.emptyList(): new ArrayList<>(elements);
+        this.elements = new ArrayList<>(elements);
     }
 
     public Collection<? extends Serializable> elements() {
@@ -22,6 +24,7 @@ public record PaginationDto(int currentPage, int totalPages, int pageSize, int t
     @Override
     public String toString() {
         return new StringBuilder().append("PaginationDto{").append("currentPage=").append(currentPage)
+                .append(", pageTotalElements=").append(pageTotalElements)
                 .append(", totalPages=").append(totalPages)
                 .append(", pageSize=").append(pageSize)
                 .append(", totalElements=").append(totalElements)

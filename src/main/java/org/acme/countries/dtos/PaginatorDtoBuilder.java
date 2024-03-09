@@ -6,6 +6,7 @@ import java.util.Collection;
 
 public class PaginatorDtoBuilder {
     private int currentPage;
+    private int pageTotalElements;
     private int totalPages;
     private int pageSize;
     private int totalElements;
@@ -13,6 +14,11 @@ public class PaginatorDtoBuilder {
 
     public PaginatorDtoBuilder setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
+        return this;
+    }
+
+    public PaginatorDtoBuilder setPageTotalElements(int pageTotalElements){
+        this.pageTotalElements=pageTotalElements;
         return this;
     }
 
@@ -37,6 +43,6 @@ public class PaginatorDtoBuilder {
     }
 
     public PaginationDto createPaginatorDto() {
-        return new PaginationDto(currentPage, totalPages, pageSize, totalElements, elements);
+        return new PaginationDto(currentPage,pageTotalElements, totalPages, pageSize, totalElements, elements);
     }
 }

@@ -17,7 +17,11 @@ import org.acme.countries.entities.Country_;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.acme.countries.entities.City_.*;
+import static org.acme.countries.entities.City_.country;
+import static org.acme.countries.entities.City_.district;
+import static org.acme.countries.entities.City_.id;
+import static org.acme.countries.entities.City_.name;
+import static org.acme.countries.entities.City_.population;
 
 
 @ApplicationScoped
@@ -39,7 +43,8 @@ public class CityDaoImpl implements CityDao {
     public PaginationDto findByCountryCodeByPage(final String countryCode, final int page, final int pageSize) {
         int counts = countByCountryCode(countryCode);
         if (counts == 0) {
-            return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(0)
+            return new PaginatorDtoBuilder().setCurrentPage(page).setPageTotalElements(0)
+                    .setTotalPages(0)
                     .setPageSize(pageSize).setTotalElements(counts)
                     .setElements(new ArrayList<>()).createPaginatorDto();
         }
@@ -56,7 +61,8 @@ public class CityDaoImpl implements CityDao {
         if ((counts % pageSize) > 0) {
             numPages += 1;
         }
-        return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(numPages).setPageSize(pageSize).setTotalElements(counts).setElements(cityDtos).createPaginatorDto();
+        return new PaginatorDtoBuilder().setCurrentPage(page).setPageTotalElements(cityDtos.size())
+                .setTotalPages(numPages).setPageSize(pageSize).setTotalElements(counts).setElements(cityDtos).createPaginatorDto();
     }
 
 

@@ -13,8 +13,11 @@ import org.acme.countries.entities.Country_;
 
 import java.util.Collection;
 
-import static org.acme.countries.entities.CountryLanguagePk_.*;
-import static org.acme.countries.entities.CountryLanguage_.*;
+import static org.acme.countries.entities.CountryLanguagePk_.language;
+import static org.acme.countries.entities.CountryLanguage_.country;
+import static org.acme.countries.entities.CountryLanguage_.countryLanguagePk;
+import static org.acme.countries.entities.CountryLanguage_.officialLanguage;
+import static org.acme.countries.entities.CountryLanguage_.percentage;
 
 @ApplicationScoped
 public class CountryLanguagesDaoImpl implements CountryLanguagesDao {

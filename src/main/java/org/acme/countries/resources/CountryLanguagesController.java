@@ -10,6 +10,8 @@ import jakarta.ws.rs.core.Response;
 import org.acme.countries.services.CountryLanguageService;
 import org.jboss.resteasy.reactive.RestResponse;
 
+import static org.jboss.resteasy.reactive.RestResponse.*;
+
 @Path("/countries/languages")
 public class CountryLanguagesController {
     private final CountryLanguageService countryLanguageService;
@@ -22,7 +24,7 @@ public class CountryLanguagesController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLanguagesByCountryCode(@QueryParam("country_code") final String countryCode){
-        return RestResponse.ResponseBuilder
+        return ResponseBuilder
                 .ok(this.countryLanguageService.getLanguagesByCountryId(countryCode),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }

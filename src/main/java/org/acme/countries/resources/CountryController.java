@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.Response;
 import org.acme.countries.services.CountryService;
 import org.acme.countries.utils.Continents;
 import org.acme.countries.utils.Regions;
-import org.jboss.resteasy.reactive.RestResponse;
+import org.jboss.resteasy.reactive.RestResponse.ResponseBuilder;
 
 @Path("/countries")
 public class CountryController {
@@ -25,7 +25,7 @@ public class CountryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll(){
-       return RestResponse.ResponseBuilder.ok(this.countryService.findAll(),
+       return ResponseBuilder.ok(this.countryService.findAll(),
                MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
 
@@ -34,7 +34,7 @@ public class CountryController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllByPage(@QueryParam("page")  final int page,
                                       @QueryParam("pageSize") final int pageSize){
-        return RestResponse.ResponseBuilder
+        return ResponseBuilder
                 .ok(this.countryService.findByPage(page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
@@ -43,7 +43,7 @@ public class CountryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllByContinent(@QueryParam("continent") final Continents continent){
-        return RestResponse.ResponseBuilder
+        return ResponseBuilder
                 .ok(this.countryService.findByContinent(continent),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
@@ -52,7 +52,7 @@ public class CountryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllByRegion(@QueryParam("region") final Regions region){
-        return RestResponse.ResponseBuilder
+        return ResponseBuilder
                 .ok(this.countryService.findByRegion(region),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
@@ -63,7 +63,7 @@ public class CountryController {
     public Response getAllByRegionPage(@QueryParam("region") final Regions region,
                                             @QueryParam("page") final int page,
                                             @QueryParam("pageSize") final int pageSize){
-        return  RestResponse.ResponseBuilder
+        return  ResponseBuilder
                 .ok(this.countryService.findByRegionByPage(region, page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
@@ -74,7 +74,7 @@ public class CountryController {
     public Response getByContinentPage(@QueryParam("continent") final Continents continent,
                                             @QueryParam("page") final int page,
                                             @QueryParam("pageSize") final  int pageSize) {
-        return RestResponse.ResponseBuilder
+        return ResponseBuilder
                 .ok(this.countryService.findByContinentByPage(continent, page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
@@ -83,7 +83,7 @@ public class CountryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByPopulation(@QueryParam("population") final Integer population){
-        return  RestResponse.ResponseBuilder
+        return  ResponseBuilder
                 .ok(this.countryService.findByPopulation(population),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
@@ -92,7 +92,7 @@ public class CountryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByIndepYear(@QueryParam("indepYear") final String indepYear){
-        return RestResponse.ResponseBuilder
+        return ResponseBuilder
                 .ok(this.countryService.findByEndip(indepYear),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }

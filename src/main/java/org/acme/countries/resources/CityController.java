@@ -8,7 +8,8 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.acme.countries.services.CityService;
-import org.jboss.resteasy.reactive.RestResponse;
+
+import static org.jboss.resteasy.reactive.RestResponse.ResponseBuilder;
 
 @Path("/cities")
 public class CityController {
@@ -24,7 +25,7 @@ public class CityController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll(@QueryParam("country_code") final String countryCode){
-       return RestResponse.ResponseBuilder
+       return ResponseBuilder
                 .ok(this.cityService.findByCountryCode(countryCode),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
       
@@ -36,7 +37,7 @@ public class CityController {
     public Response getAllByPage(@QueryParam("country_code") final String countryCode,
                                  @QueryParam("page") final int page,
                                       @QueryParam("pageSize")  int pageSize){
-        return  RestResponse.ResponseBuilder
+        return  ResponseBuilder
                 .ok(this.cityService.findByCountryCodeByPage(countryCode, page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }

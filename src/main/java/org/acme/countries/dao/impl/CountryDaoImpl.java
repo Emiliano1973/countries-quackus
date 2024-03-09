@@ -20,7 +20,21 @@ import org.acme.countries.utils.Regions;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.acme.countries.entities.Country_.*;
+import static org.acme.countries.entities.Country_.capital;
+import static org.acme.countries.entities.Country_.continent;
+import static org.acme.countries.entities.Country_.countryCode;
+import static org.acme.countries.entities.Country_.countryCode2;
+import static org.acme.countries.entities.Country_.gnp;
+import static org.acme.countries.entities.Country_.gnpOld;
+import static org.acme.countries.entities.Country_.governmentForm;
+import static org.acme.countries.entities.Country_.headOfState;
+import static org.acme.countries.entities.Country_.indepYear;
+import static org.acme.countries.entities.Country_.lifeExpectancy;
+import static org.acme.countries.entities.Country_.localName;
+import static org.acme.countries.entities.Country_.name;
+import static org.acme.countries.entities.Country_.population;
+import static org.acme.countries.entities.Country_.region;
+import static org.acme.countries.entities.Country_.surfaceArea;
 
 
 @ApplicationScoped
@@ -43,7 +57,8 @@ public class CountryDaoImpl implements CountryDao {
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         int counts = countAll(cb);
         if (counts == 0) {
-            return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(0).setPageSize(pageSize)
+            return new PaginatorDtoBuilder().setCurrentPage(page).setPageTotalElements(0)
+                    .setPageTotalElements(0).setPageSize(pageSize)
                     .setTotalElements(counts).setElements(new ArrayList<>()).createPaginatorDto();
         }
         CriteriaQuery<CountryDto> countryDtoCriteriaQuery = cb.createQuery(CountryDto.class);
@@ -58,7 +73,8 @@ public class CountryDaoImpl implements CountryDao {
         if ((counts % pageSize) > 0) {
             numPages += 1;
         }
-        return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(numPages).setPageSize(pageSize)
+        return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(numPages)
+                .setPageTotalElements(countryDtos.size()).setPageSize(pageSize)
                 .setTotalElements(counts).setElements(countryDtos).createPaginatorDto();
     }
 
@@ -81,7 +97,7 @@ public class CountryDaoImpl implements CountryDao {
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         int counts = countByFieldName(cb,Country_.continent, continent.getContinentName());
         if (counts == 0) {
-            return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(0).setPageSize(pageSize)
+            return new PaginatorDtoBuilder().setCurrentPage(page).setPageTotalElements(0).setTotalPages(0).setPageSize(pageSize)
                     .setTotalElements(counts).setElements(new ArrayList<>()).createPaginatorDto();
         }
         CriteriaQuery<CountryDto> countryDtoCriteriaQuery = cb.createQuery(CountryDto.class);
@@ -98,7 +114,8 @@ public class CountryDaoImpl implements CountryDao {
         if ((counts % pageSize) > 0) {
             numPages += 1;
         }
-        return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(numPages).setPageSize(pageSize)
+        return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(numPages)
+                .setPageTotalElements(countryDtos.size()).setPageSize(pageSize)
                 .setTotalElements(counts).setElements(countryDtos).createPaginatorDto();
     }
 
@@ -121,7 +138,7 @@ public class CountryDaoImpl implements CountryDao {
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         int counts = countByFieldName(cb, Country_.region, region.getRegionName());
         if (counts == 0) {
-            return new PaginatorDtoBuilder().setCurrentPage(page).setTotalPages(0).setPageSize(pageSize)
+            return new PaginatorDtoBuilder().setCurrentPage(page).setPageTotalElements(0).setTotalPages(0).setPageSize(pageSize)
                     .setTotalElements(counts).setElements(new ArrayList<>()).createPaginatorDto();
         }
         CriteriaQuery<CountryDto> countryDtoCriteriaQuery = cb.createQuery(CountryDto.class);
