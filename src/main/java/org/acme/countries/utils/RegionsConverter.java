@@ -7,8 +7,8 @@ import jakarta.ws.rs.ext.Provider;
 public class RegionsConverter implements ParamConverter<Regions> {
     @Override
     public Regions fromString(String source) {
-        return  Regions.getRegionByString(source).orElseThrow(()->new IllegalArgumentException(
-                "Error parameter in input with value ["+source+"] is not a region"));
+        return Regions.getRegionByString(source).orElseThrow(() -> new IllegalArgumentException(
+                "Error parameter in input with value [" + source + "] is not a region"));
     }
 
     @Override

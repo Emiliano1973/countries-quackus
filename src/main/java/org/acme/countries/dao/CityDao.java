@@ -1,7 +1,6 @@
 package org.acme.countries.dao;
 
 
-
 import org.acme.countries.dtos.CityDto;
 import org.acme.countries.dtos.PaginationDto;
 

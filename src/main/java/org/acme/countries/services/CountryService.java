@@ -8,9 +8,11 @@ import org.acme.countries.utils.Regions;
 
 public interface CountryService {
     ResponseDto findAll();
+
     PaginationDto findByPage(int page, int pageSize);
 
     ResponseDto findByContinent(Continents continent);
+
     PaginationDto findByContinentByPage(Continents continent, int page, int pageSize);
 
     ResponseDto findByRegion(Regions region);

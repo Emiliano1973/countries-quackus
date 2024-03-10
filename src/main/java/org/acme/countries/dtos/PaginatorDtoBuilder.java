@@ -17,8 +17,8 @@ public class PaginatorDtoBuilder {
         return this;
     }
 
-    public PaginatorDtoBuilder setPageTotalElements(int pageTotalElements){
-        this.pageTotalElements=pageTotalElements;
+    public PaginatorDtoBuilder setPageTotalElements(int pageTotalElements) {
+        this.pageTotalElements = pageTotalElements;
         return this;
     }
 
@@ -43,6 +43,6 @@ public class PaginatorDtoBuilder {
     }
 
     public PaginationDto createPaginatorDto() {
-        return new PaginationDto(currentPage,pageTotalElements, totalPages, pageSize, totalElements, elements);
+        return new PaginationDto(currentPage, pageTotalElements, totalPages, pageSize, totalElements, elements);
     }
 }

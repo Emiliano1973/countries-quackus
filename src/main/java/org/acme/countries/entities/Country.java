@@ -25,7 +25,7 @@ public class Country {
     private String region;
 
     @Column(name = "SurfaceArea")
-    private  Double surfaceArea;
+    private Double surfaceArea;
 
     @Column(name = "IndepYear")
     private Integer indepYear;
@@ -34,35 +34,35 @@ public class Country {
     private Integer population;
 
     @Column(name = "LifeExpectancy")
-    private  Double lifeExpectancy;
+    private Double lifeExpectancy;
 
     @Column(name = "GNP")
-    private  Double gnp;
+    private Double gnp;
 
     @Column(name = "GNPOld")
-    private  Double gnpOld;
+    private Double gnpOld;
 
     @Column(name = "LocalName")
-    private String localName ;
+    private String localName;
 
     @Column(name = "GovernmentForm")
-    private String governmentForm ;
+    private String governmentForm;
 
     @Column(name = "HeadOfState")
-    private String headOfState ;
-            //`country`.`Capital`,
+    private String headOfState;
+    //`country`.`Capital`,
 
     @Column(name = "Code2")
     private String countryCode2;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
-    private Set<City> cities=new HashSet<>();
+    private Set<City> cities = new HashSet<>();
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital", referencedColumnName = "id")
     private City capital;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
-    private Set<CountryLanguage> languages=new HashSet<>();
+    private Set<CountryLanguage> languages = new HashSet<>();
 
 }

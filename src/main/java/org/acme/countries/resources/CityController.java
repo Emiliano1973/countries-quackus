@@ -24,11 +24,11 @@ public class CityController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(@QueryParam("country_code") final String countryCode){
-       return ResponseBuilder
+    public Response getAll(@QueryParam("country_code") final String countryCode) {
+        return ResponseBuilder
                 .ok(this.cityService.findByCountryCode(countryCode),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
-      
+
     }
 
     @Path("/pages")
@@ -36,10 +36,10 @@ public class CityController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllByPage(@QueryParam("country_code") final String countryCode,
                                  @QueryParam("page") final int page,
-                                      @QueryParam("pageSize")  int pageSize){
-        return  ResponseBuilder
+                                 @QueryParam("pageSize") int pageSize) {
+        return ResponseBuilder
                 .ok(this.cityService.findByCountryCodeByPage(countryCode, page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
-    
+
 }

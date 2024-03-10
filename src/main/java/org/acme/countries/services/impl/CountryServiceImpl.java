@@ -26,18 +26,19 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public ResponseDto findAll() {
-        Collection<CountryDto> countryDtos=this.countryDao.findAll();
+        Collection<CountryDto> countryDtos = this.countryDao.findAll();
         return new ResponseDto(countryDtos.size(), countryDtos);
     }
+
     @Override
     public PaginationDto findByPage(final int page, final int pageSize) {
-        return  this.countryDao.findByPage(page, pageSize);
+        return this.countryDao.findByPage(page, pageSize);
     }
 
     @Override
     public ResponseDto findByContinent(final Continents continent) {
-        Collection<CountryDto> countryDtos=this.countryDao.findByContinent(continent);
-        return new ResponseDto(countryDtos.size(), countryDtos );
+        Collection<CountryDto> countryDtos = this.countryDao.findByContinent(continent);
+        return new ResponseDto(countryDtos.size(), countryDtos);
     }
 
     @Override
@@ -47,24 +48,25 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public ResponseDto findByRegion(final Regions region) {
-        Collection<CountryDto> countryDtos=this.countryDao.findByRegion(region);
+        Collection<CountryDto> countryDtos = this.countryDao.findByRegion(region);
         return new ResponseDto(countryDtos.size(), countryDtos);
     }
 
     @Override
-    public PaginationDto findByRegionByPage(final Regions region, final  int page, final int pageSize) {
+    public PaginationDto findByRegionByPage(final Regions region, final int page, final int pageSize) {
         return this.countryDao.findByRegionByPage(region, page, pageSize);
     }
+
     @Override
     public ResponseDto findByPopulation(final Integer population) {
-        Collection<CountryDto> countryDtos=this.countryDao.findByPopulation(population);
+        Collection<CountryDto> countryDtos = this.countryDao.findByPopulation(population);
         return new ResponseDto(countryDtos.size(), countryDtos);
     }
 
     @Override
     public ResponseDto findByEndip(final String isIndepYear) {
-        boolean isEndYear=(isIndepYear.equals("Y"));
-        Collection<CountryDto> countryDtos=this.countryDao.findByIndep(isEndYear);
+        boolean isEndYear = (isIndepYear.equals("Y"));
+        Collection<CountryDto> countryDtos = this.countryDao.findByIndep(isEndYear);
         return new ResponseDto(countryDtos.size(), countryDtos);
     }
 

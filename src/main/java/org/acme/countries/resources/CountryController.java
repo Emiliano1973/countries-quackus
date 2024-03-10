@@ -24,16 +24,16 @@ public class CountryController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(){
-       return ResponseBuilder.ok(this.countryService.findAll(),
-               MediaType.APPLICATION_JSON_TYPE).build().toResponse();
+    public Response getAll() {
+        return ResponseBuilder.ok(this.countryService.findAll(),
+                MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
 
     @Path("/pages")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllByPage(@QueryParam("page")  final int page,
-                                      @QueryParam("pageSize") final int pageSize){
+    public Response getAllByPage(@QueryParam("page") final int page,
+                                 @QueryParam("pageSize") final int pageSize) {
         return ResponseBuilder
                 .ok(this.countryService.findByPage(page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
@@ -42,7 +42,7 @@ public class CountryController {
     @Path("/continent")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllByContinent(@QueryParam("continent") final Continents continent){
+    public Response getAllByContinent(@QueryParam("continent") final Continents continent) {
         return ResponseBuilder
                 .ok(this.countryService.findByContinent(continent),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
@@ -51,7 +51,7 @@ public class CountryController {
     @Path("/region")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllByRegion(@QueryParam("region") final Regions region){
+    public Response getAllByRegion(@QueryParam("region") final Regions region) {
         return ResponseBuilder
                 .ok(this.countryService.findByRegion(region),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
@@ -61,19 +61,19 @@ public class CountryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllByRegionPage(@QueryParam("region") final Regions region,
-                                            @QueryParam("page") final int page,
-                                            @QueryParam("pageSize") final int pageSize){
-        return  ResponseBuilder
+                                       @QueryParam("page") final int page,
+                                       @QueryParam("pageSize") final int pageSize) {
+        return ResponseBuilder
                 .ok(this.countryService.findByRegionByPage(region, page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
 
-    @Path( "/continent/pages")
+    @Path("/continent/pages")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByContinentPage(@QueryParam("continent") final Continents continent,
-                                            @QueryParam("page") final int page,
-                                            @QueryParam("pageSize") final  int pageSize) {
+                                       @QueryParam("page") final int page,
+                                       @QueryParam("pageSize") final int pageSize) {
         return ResponseBuilder
                 .ok(this.countryService.findByContinentByPage(continent, page, pageSize),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
@@ -82,8 +82,8 @@ public class CountryController {
     @Path("/population")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getByPopulation(@QueryParam("population") final Integer population){
-        return  ResponseBuilder
+    public Response getByPopulation(@QueryParam("population") final Integer population) {
+        return ResponseBuilder
                 .ok(this.countryService.findByPopulation(population),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();
     }
@@ -91,7 +91,7 @@ public class CountryController {
     @Path("/indepYear")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getByIndepYear(@QueryParam("indepYear") final String indepYear){
+    public Response getByIndepYear(@QueryParam("indepYear") final String indepYear) {
         return ResponseBuilder
                 .ok(this.countryService.findByEndip(indepYear),
                         MediaType.APPLICATION_JSON_TYPE).build().toResponse();

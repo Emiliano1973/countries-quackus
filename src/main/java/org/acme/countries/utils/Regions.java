@@ -30,7 +30,7 @@ public enum Regions {
     MELANESIA("Melanesia"),
     MICRONESIA("Micronesia"),
     BRITISH_ISLANDS("British Islands"),
-    MICRONESIA_CARIBBEAN("Micronesia/Caribbean")    ;
+    MICRONESIA_CARIBBEAN("Micronesia/Caribbean");
 
     private final String regionName;
 
@@ -38,16 +38,16 @@ public enum Regions {
         this.regionName = regionName;
     }
 
+    public static Collection<String> getAllRegions() {
+        return Stream.of(values()).map(Regions::getRegionName).collect(Collectors.toList());
+    }
+
+    public static Optional<Regions> getRegionByString(final String regionName) {
+        return Stream.of(values()).filter(c -> c.getRegionName().equalsIgnoreCase(regionName)).findFirst();
+    }
+
     public String getRegionName() {
         return regionName;
-    }
-
-    public static Collection<String> getAllRegions(){
-      return Stream.of(values()).map(Regions::getRegionName).collect(Collectors.toList());
-    }
-
-    public static Optional<Regions> getRegionByString(final String regionName){
-        return Stream.of(values()).filter(c->c.getRegionName().equalsIgnoreCase(regionName)).findFirst();
     }
 
 }

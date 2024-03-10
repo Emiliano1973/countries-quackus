@@ -11,7 +11,7 @@ import org.acme.countries.services.CountryLanguageService;
 import java.util.Collection;
 
 @ApplicationScoped
-public class CountryLanguageServiceImpl  implements CountryLanguageService {
+public class CountryLanguageServiceImpl implements CountryLanguageService {
 
     private final CountryLanguagesDao countryLanguagesDao;
 
@@ -22,13 +22,13 @@ public class CountryLanguageServiceImpl  implements CountryLanguageService {
 
     @Override
     public ResponseDto getLanguagesByCountryIdAndIsOfficial(String countryCode, Boolean isOffcial) {
-        Collection<CountryLanguageDto> countryLanguageDtos= this.countryLanguagesDao.getLanguagesByCountryIdAndIsOfficial(countryCode, isOffcial);
-        return new ResponseDto( countryLanguageDtos.size(), countryLanguageDtos);
+        Collection<CountryLanguageDto> countryLanguageDtos = this.countryLanguagesDao.getLanguagesByCountryIdAndIsOfficial(countryCode, isOffcial);
+        return new ResponseDto(countryLanguageDtos.size(), countryLanguageDtos);
     }
 
     @Override
     public ResponseDto getLanguagesByCountryId(String countryCode) {
-        Collection<CountryLanguageDto> countryLanguageDtos= this.countryLanguagesDao.getLanguagesByCountryId(countryCode);
-        return new ResponseDto( countryLanguageDtos.size(), countryLanguageDtos);
+        Collection<CountryLanguageDto> countryLanguageDtos = this.countryLanguagesDao.getLanguagesByCountryId(countryCode);
+        return new ResponseDto(countryLanguageDtos.size(), countryLanguageDtos);
     }
 }

@@ -2,16 +2,14 @@ package org.acme.countries.services.impl;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.transaction.TransactionScoped;
-import jakarta.transaction.Transactional;
 import org.acme.countries.dao.CityDao;
 import org.acme.countries.dtos.CityDto;
 import org.acme.countries.dtos.PaginationDto;
 import org.acme.countries.dtos.ResponseDto;
 import org.acme.countries.services.CityService;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+
 @ApplicationScoped
 public class CityServiceImpl implements CityService {
 
@@ -24,7 +22,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public ResponseDto findByCountryCode(String countryCode) {
-        Collection<CityDto> cities= this.cityDao.findByCountryCode(countryCode);
+        Collection<CityDto> cities = this.cityDao.findByCountryCode(countryCode);
         return new ResponseDto(cities.size(), cities);
     }
 
